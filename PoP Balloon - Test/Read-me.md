@@ -1,7 +1,7 @@
 ### In this folder you may test anything you want
 ### Under the Conventions:
 
-### Fodler Name:
+### Folder Name:
 ### Example:
 ### 01_Lior:health-decrement.v1
 ### If there are more than 1 test on the same subject use:
