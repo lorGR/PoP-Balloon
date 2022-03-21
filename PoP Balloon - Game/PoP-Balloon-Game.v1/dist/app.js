@@ -1,6 +1,8 @@
 console.log("hi!");
 var body = document.querySelector("body");
 var balloonHolderArr = [];
+var popCounter = 0;
+var pop = document.querySelector("audio");
 // Function:
 // In interval, creates div element
 // Appends div to body
@@ -58,8 +60,13 @@ function checkIfClick() {
     balloonHolderArr.forEach(function (element) {
         element.addEventListener('click', function (ev) {
             element.remove();
+            popCounter++;
+            playSound();
         });
     });
+}
+function playSound() {
+    pop.play();
 }
 setInterval(checkAndRemove, 100);
 setInterval(createBalloon, getRandomNumber(2500, 5000));

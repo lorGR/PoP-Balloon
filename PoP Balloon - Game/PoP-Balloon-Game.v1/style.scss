@@ -16,8 +16,14 @@ body {
         width: 10vw;
         position: absolute;
         transition: top 5s ease-in-out;
+
         img {
             width: 100%;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
         }
     }
 
