@@ -15,7 +15,6 @@ body {
 body .balloon-holder {
   height: 10vh;
   width: 10vw;
-  background-color: black;
   position: absolute;
   transition: top 5s ease-in-out;
 }
