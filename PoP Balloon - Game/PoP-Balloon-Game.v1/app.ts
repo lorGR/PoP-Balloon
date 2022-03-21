@@ -1,8 +1,10 @@
-console.log(`hi!`)
-const body = document.querySelector("body");
-const balloonHolderArr = [];
-let popCounter = 0;
-const pop = document.querySelector("audio")
+const body:HTMLBodyElement = document.querySelector("body");
+const balloonHolderArr:Array<HTMLDivElement> = [];
+const pop:HTMLAudioElement = document.querySelector("audio");
+const bgMusic:HTMLAudioElement = document.querySelector('#bgMusic');
+let popCounter:number = 0;
+
+bgMusic.volume = .1;
 
 // Function:
 // In interval, creates div element
@@ -72,8 +74,6 @@ function checkIfClick() {
         })
     })
 }
-
-
 
 setInterval(checkAndRemove, 100)
 setInterval(createBalloon, getRandomNumber(2500, 5000))

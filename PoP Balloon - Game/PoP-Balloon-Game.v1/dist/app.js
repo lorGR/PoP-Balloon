@@ -1,8 +1,9 @@
-console.log("hi!");
 var body = document.querySelector("body");
 var balloonHolderArr = [];
-var popCounter = 0;
 var pop = document.querySelector("audio");
+var bgMusic = document.querySelector('#bgMusic');
+var popCounter = 0;
+bgMusic.volume = .1;
 // Function:
 // In interval, creates div element
 // Appends div to body
