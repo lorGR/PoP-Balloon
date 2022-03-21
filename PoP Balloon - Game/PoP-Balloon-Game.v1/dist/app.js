@@ -61,12 +61,9 @@ function checkIfClick() {
         element.addEventListener('click', function (ev) {
             element.remove();
             popCounter++;
-            playSound();
+            pop.play();
         });
     });
-}
-function playSound() {
-    pop.play();
 }
 setInterval(checkAndRemove, 100);
 setInterval(createBalloon, getRandomNumber(2500, 5000));

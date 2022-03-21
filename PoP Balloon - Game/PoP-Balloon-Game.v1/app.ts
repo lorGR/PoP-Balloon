@@ -68,14 +68,11 @@ function checkIfClick() {
         element.addEventListener('click', ev => {
             element.remove();
             popCounter++;
-            playSound();
+            pop.play();
         })
     })
 }
 
-function playSound() {
-    pop.play()
-}
 
 
 setInterval(checkAndRemove, 100)
