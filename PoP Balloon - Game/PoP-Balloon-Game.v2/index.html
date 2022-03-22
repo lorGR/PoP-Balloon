@@ -17,8 +17,20 @@
             <p>Points: <span id="userPoints">0</span></p>
         </div>
     </div>
+    <div class="health-wrapper">
+        <div class="health-container">
+            <img class="health" src="Assets/Svgs/heart-filled.svg" alt="heart">
+            <img class="health" src="Assets/Svgs/heart-filled.svg" alt="heart">
+            <img class="health" src="Assets/Svgs/heart-filled.svg" alt="heart">
+            <img class="health" src="Assets/Svgs/heart-filled.svg" alt="heart">
+            <img class="health" src="Assets/Svgs/heart-filled.svg" alt="heart">
+        </div>
+    </div>
+    <div id= "gameover" class="gameover-wrapper hidden">
+        <p>Game Over</p>
+    </div>
     <audio id= "popSound" src="Assets/Audio/pop.mp3"></audio>
-    <audio controls autoplay loop id="bgMusic">
+    <audio controls loop id="bgMusic"> <!--Add autoplay-->>
         <source src="Assets/Audio/BackgroundMusic.mp3" type="audio/mpeg">
     </audio>
 </body>

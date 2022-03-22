@@ -3,6 +3,9 @@ var popSound = document.querySelector('#popSound');
 var bgMusic = document.querySelector('#bgMusic');
 var balloonsArray = [];
 var userPoints = document.getElementById('userPoints');
+var userHealth = document.querySelectorAll('.health');
+var gameOver = document.getElementById('gameover');
+var health = 5;
 var pointsCounter = 0;
 bgMusic.volume = .1;
 body.style.backgroundImage = "url('Assets/Images/Background.v1.jpg')";
@@ -10,17 +13,19 @@ body.style.backgroundImage = "url('Assets/Images/Background.v1.jpg')";
 // Creates balloon with class
 // Returns array of balloons 
 function createBalloon() {
-    var balloonHolder = document.createElement('div');
-    var balloonImage = document.createElement('img');
-    balloonHolder.classList.add('balloon-holder');
-    balloonImage.classList.add('balloon-image');
-    settingBalloonPosition(balloonHolder);
-    balloonImage.src = './Assets/Svgs/red-balloon.svg';
-    body.appendChild(balloonHolder);
-    balloonHolder.appendChild(balloonImage);
-    balloonsArray.push(balloonHolder);
-    settingBalloonFly(balloonHolder);
-    return balloonsArray;
+    if (health > 0) {
+        var balloonHolder = document.createElement('div');
+        var balloonImage = document.createElement('img');
+        balloonHolder.classList.add('balloon-holder');
+        balloonImage.classList.add('balloon-image');
+        settingBalloonPosition(balloonHolder);
+        balloonImage.src = './Assets/Svgs/red-balloon.svg';
+        body.appendChild(balloonHolder);
+        balloonHolder.appendChild(balloonImage);
+        balloonsArray.push(balloonHolder);
+        settingBalloonFly(balloonHolder);
+        return balloonsArray;
+    }
 }
 // Function:
 // Setting balloon started position
@@ -41,12 +46,27 @@ function getRandomNumber(min, max) {
 }
 // Function:
 // Checks if balloon out of border
-// True => remove Balloon
+// True:
+//      1. Remove Balloon
+//      2. Health decrease
 // False => do nothing
 function checkOutOffBounds() {
-    balloonsArray.forEach(function (element) {
-        element.getBoundingClientRect().top < -160 ? removeBalloon(element) : false;
-    });
+    if (health > 0) {
+        balloonsArray.forEach(function (element) {
+            if (element.getBoundingClientRect().top < -160 && element.children.length === 1) {
+                health--;
+                userHealth[health].src = 'Assets/Svgs/heart-unfilled.svg';
+                removeBalloon(element);
+            }
+            else if (element.getBoundingClientRect().top < -160) {
+                removeBalloon(element);
+            }
+        });
+    }
+    else {
+        gameOver.classList.remove('hidden');
+        clearInterval(2);
+    }
 }
 // Function: 
 // Remove balloon
@@ -70,4 +90,4 @@ body.addEventListener('click', function (event) {
     }
 });
 setInterval(createBalloon, getRandomNumber(1000, 3500));
-setInterval(checkOutOffBounds, 2500);
+setInterval(checkOutOffBounds, 100);

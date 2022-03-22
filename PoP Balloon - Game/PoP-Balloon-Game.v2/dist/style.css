@@ -43,6 +43,34 @@ body .points-wrapper .points-container p {
   text-transform: uppercase;
   margin: 0;
 }
+body .health-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+body .health-wrapper .health-container {
+  display: inline;
+}
+body .health-wrapper .health-container img {
+  width: 3%;
+}
+body .gameover-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .gameover-wrapper p {
+  margin: 0;
+  font-size: 10rem;
+  font-weight: 700;
+}
+body .hidden {
+  display: none;
+}
 body #bgMusic {
   position: absolute;
   top: 96%;

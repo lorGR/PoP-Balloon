@@ -1,9 +1,12 @@
 const body: HTMLBodyElement = document.querySelector('body');
 const popSound: HTMLAudioElement = document.querySelector('#popSound');
 const bgMusic: HTMLAudioElement = document.querySelector('#bgMusic')
-const balloonsArray:Array<HTMLDivElement> = [];
-const userPoints:HTMLSpanElement = document.getElementById('userPoints');
-let pointsCounter = 0;
+const balloonsArray: Array<HTMLDivElement> = [];
+const userPoints: HTMLSpanElement = document.getElementById('userPoints');
+const userHealth: NodeListOf<HTMLImageElement> = document.querySelectorAll('.health');
+const gameOver: HTMLDivElement = document.getElementById('gameover');
+let health:number = 5;
+let pointsCounter:number = 0;
 
 bgMusic.volume = .1;
 
@@ -13,23 +16,25 @@ body.style.backgroundImage = `url('Assets/Images/Background.v1.jpg')`
 // Creates balloon with class
 // Returns array of balloons 
 function createBalloon():Array<HTMLDivElement>{
-    const balloonHolder = document.createElement('div');
-    const balloonImage = document.createElement('img');
-
-    balloonHolder.classList.add('balloon-holder');
-    balloonImage.classList.add('balloon-image');
-
-    settingBalloonPosition(balloonHolder);
-    balloonImage.src = './Assets/Svgs/red-balloon.svg';
-
-    body.appendChild(balloonHolder);
-    balloonHolder.appendChild(balloonImage);
-
-    balloonsArray.push(balloonHolder);
+    if(health > 0){
+        const balloonHolder = document.createElement('div');
+        const balloonImage = document.createElement('img');
     
-    settingBalloonFly(balloonHolder);
-
-    return balloonsArray;
+        balloonHolder.classList.add('balloon-holder');
+        balloonImage.classList.add('balloon-image');
+    
+        settingBalloonPosition(balloonHolder);
+        balloonImage.src = './Assets/Svgs/red-balloon.svg';
+    
+        body.appendChild(balloonHolder);
+        balloonHolder.appendChild(balloonImage);
+    
+        balloonsArray.push(balloonHolder);
+        
+        settingBalloonFly(balloonHolder);
+    
+        return balloonsArray;
+    }
 }
 
 // Function:
@@ -54,12 +59,25 @@ function getRandomNumber(min:number, max:number):number{
 
 // Function:
 // Checks if balloon out of border
-// True => remove Balloon
+// True:
+//      1. Remove Balloon
+//      2. Health decrease
 // False => do nothing
 function checkOutOffBounds(){
-    balloonsArray.forEach(element => {
-        element.getBoundingClientRect().top < -160 ? removeBalloon(element) : false
-    })
+    if(health > 0){
+        balloonsArray.forEach(element => {
+            if(element.getBoundingClientRect().top < -160 && element.children.length === 1){
+                health--;
+                userHealth[health].src = 'Assets/Svgs/heart-unfilled.svg'
+                removeBalloon(element);
+            }else if(element.getBoundingClientRect().top < -160){
+                removeBalloon(element);
+            }
+        })
+    }else{
+        gameOver.classList.remove('hidden');
+        clearInterval(2);
+    }
 }
 
 // Function: 
@@ -88,4 +106,4 @@ body.addEventListener('click', function (event:any){
 
 
 setInterval(createBalloon, getRandomNumber(1000,3500));
-setInterval(checkOutOffBounds, 2500);
+setInterval(checkOutOffBounds, 100);
