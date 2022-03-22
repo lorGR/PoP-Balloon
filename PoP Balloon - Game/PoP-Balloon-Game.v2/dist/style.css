@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body .balloon-holder {
+  position: absolute;
+  width: 5em;
+  height: 10em;
+  transition: all 5s ease-in-out;
+}
+body .balloon-holder .balloon-image {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+body .points-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+body .points-wrapper .points-container {
+  display: inline;
+  padding: 0.25em 0.5em;
+  font-size: 3rem;
+  margin-top: 0.5em;
+  background-color: #F3E27D;
+  border: 2px solid white;
+  border-radius: 5em;
+  box-shadow: 3px 3px 10px 7px rgba(0, 0, 0, 0.35);
+}
+body .points-wrapper .points-container p {
+  text-transform: uppercase;
+  margin: 0;
+}
+body #bgMusic {
+  position: absolute;
+  top: 96%;
+}
