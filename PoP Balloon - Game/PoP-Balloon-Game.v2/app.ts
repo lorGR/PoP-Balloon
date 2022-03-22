@@ -24,7 +24,7 @@ function createBalloon():Array<HTMLDivElement>{
         balloonImage.classList.add('balloon-image');
     
         settingBalloonPosition(balloonHolder);
-        balloonImage.src = './Assets/Svgs/red-balloon.svg';
+        balloonImage.src = './Assets/Svgs/balloon-red.svg';
     
         body.appendChild(balloonHolder);
         balloonHolder.appendChild(balloonImage);
@@ -102,8 +102,6 @@ body.addEventListener('click', function (event:any){
         event.target.remove();
     }
 })
-
-
 
 setInterval(createBalloon, getRandomNumber(1000,3500));
 setInterval(checkOutOffBounds, 100);

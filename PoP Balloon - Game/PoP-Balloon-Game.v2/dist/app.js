@@ -19,7 +19,7 @@ function createBalloon() {
         balloonHolder.classList.add('balloon-holder');
         balloonImage.classList.add('balloon-image');
         settingBalloonPosition(balloonHolder);
-        balloonImage.src = './Assets/Svgs/red-balloon.svg';
+        balloonImage.src = './Assets/Svgs/balloon-red.svg';
         body.appendChild(balloonHolder);
         balloonHolder.appendChild(balloonImage);
         balloonsArray.push(balloonHolder);
