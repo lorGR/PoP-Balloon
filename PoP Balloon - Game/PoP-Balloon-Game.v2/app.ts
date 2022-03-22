@@ -4,7 +4,7 @@ const bgMusic: HTMLAudioElement = document.querySelector('#bgMusic')
 const balloonsArray: Array<HTMLDivElement> = [];
 const userPoints: HTMLSpanElement = document.getElementById('userPoints');
 const userHealth: NodeListOf<HTMLImageElement> = document.querySelectorAll('.health');
-const gameOver: HTMLDivElement = document.getElementById('gameover');
+const gameOver: HTMLDivElement = document.querySelector('#gameover');
 let health:number = 5;
 let pointsCounter:number = 0;
 
