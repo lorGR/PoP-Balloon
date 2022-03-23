@@ -35,6 +35,9 @@ function createBalloon():Array<HTMLDivElement>{
     
         return balloonsArray;
     }
+    else{
+        clearInterval(balloonCreated)
+    }
 }
 
 // Function:
@@ -76,7 +79,8 @@ function checkOutOffBounds(){
         })
     }else{
         gameOver.classList.remove('hidden');
-        clearInterval(2);
+        console.log('gameover');
+        clearInterval(checkOut);
     }
 }
 
@@ -103,5 +107,5 @@ body.addEventListener('click', function (event:any){
     }
 })
 
-setInterval(createBalloon, getRandomNumber(1000,3500));
-setInterval(checkOutOffBounds, 100);
+const balloonCreated = setInterval(createBalloon, getRandomNumber(1000,3500));
+const checkOut = setInterval(checkOutOffBounds, 100);

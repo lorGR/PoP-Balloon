@@ -26,6 +26,9 @@ function createBalloon() {
         settingBalloonFly(balloonHolder);
         return balloonsArray;
     }
+    else {
+        clearInterval(balloonCreated);
+    }
 }
 // Function:
 // Setting balloon started position
@@ -65,7 +68,8 @@ function checkOutOffBounds() {
     }
     else {
         gameOver.classList.remove('hidden');
-        clearInterval(2);
+        console.log('gameover');
+        clearInterval(checkOut);
     }
 }
 // Function: 
@@ -89,5 +93,5 @@ body.addEventListener('click', function (event) {
         event.target.remove();
     }
 });
-setInterval(createBalloon, getRandomNumber(1000, 3500));
-setInterval(checkOutOffBounds, 100);
+var balloonCreated = setInterval(createBalloon, getRandomNumber(1000, 3500));
+var checkOut = setInterval(checkOutOffBounds, 100);
